@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<div class="modal fade" id="candid_editmod">
+<div class="modal fade" id="candid_editmod<?= $id; ?>">
     <div class="modal-dialog">
       <div class="modal-content">
       
@@ -15,40 +15,40 @@
             <div class="form-group">
               <label>Position:</label>
               <select name="position" class="custom-select">
-                <option value="<?= $position; ?>"><?= $position; ?></option>
+                <option value=""<?= (($res['position'] == '')?' selected':''); ?>></option>
                 <?php while($cand = mysqli_fetch_assoc($result_post)): ?>
-                  <option value="<?= $cand['post']; ?>"><?= $cand['post'] ?></option>
+                  <option value="<?= $cand['post']; ?>"<?= (($res['position'] == $cand['post'])?' selected':''); ?>><?= $cand['post'] ?></option>
                 <?php endwhile; ?>
               </select>
             </div>
 
             <div class="form-group">
               <label for="firstname">First Name:</label>
-              <input type="text" class="form-control" id="firstname" name="firstname" value="<?= $firstname; ?>">
+              <input type="text" class="form-control" id="firstname" name="firstname" value="<?= $res['firstname']; ?>">
             </div>
 
             <div class="form-group">
               <label for="lastname">Last Name:</label>
-              <input type="text" class="form-control" id="lastname" name="lastname" value="<?= $lastname; ?>">
+              <input type="text" class="form-control" id="lastname" name="lastname" value="<?= $res['lastname']; ?>">
             </div>
 
             <div class="form-group">
               <label>Level:</label>
               <select name="level" class="custom-select">
-                <option value=""<?= (($level == '')?' selected':''); ?>></option>
-                <option value="100"<?= (($level == '100')?' selected':''); ?>>100</option>
-                <option value="200"<?= (($level == '200')?' selected':''); ?>>200</option>
-                <option value="300"<?= (($level == '300')?' selected':''); ?>>300</option>
-                <option value="400"<?= (($level == '400')?' selected':''); ?>>400</option>
+                <option value=""<?= (($res['level'] == '')?' selected':''); ?>></option>
+                <option value="100"<?= (($res['level'] == '100')?' selected':''); ?>>100</option>
+                <option value="200"<?= (($res['level'] == '200')?' selected':''); ?>>200</option>
+                <option value="300"<?= (($res['level'] == '300')?' selected':''); ?>>300</option>
+                <option value="400"<?= (($res['level'] == '400')?' selected':''); ?>>400</option>
               </select>
             </div>
 
             <div class="form-group">
               <label>Gender:</label>
               <select name="gender" class="custom-select">
-                <option value="<?= $gender; ?>" selected><?= $gender; ?></option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+                <option value=""<?= (($res['gender'] == '')?' selected':''); ?>></option>
+                <option value="Male"<?= (($res['gender'] == 'Male')?' selected':''); ?>>Male</option>
+                <option value="Female"<?= (($res['gender'] == 'Female')?' selected':''); ?>>Female</option>
               </select>
             </div>
 

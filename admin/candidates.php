@@ -7,7 +7,6 @@
   // DATABASE
   $sql_candid = "SELECT * FROM candidates";
   $result_candid = $db->query($sql_candid);
-  $candidQ = mysqli_fetch_assoc($result_candid);
 
   $sql_post = "SELECT * FROM position";
   $result_post = $db->query($sql_post);
@@ -17,12 +16,6 @@
   // DECLARATIONS
   $i = 1;
 
-  $position = ((isset($_POST['position']) && $_POST['position'] != '')?$_POST['position']:$candidQ['position']);
-  $firstname = ((isset($_POST['firstname']) && $_POST['firstname'] != '')?$_POST['firstname']:$candidQ['firstname']);
-  $lastname = ((isset($_POST['lastname']) && $_POST['lastname'] != '')?$_POST['lastname']:$candidQ['lastname']);
-  $level = ((isset($_POST['level']) && $_POST['level'] != '')?$_POST['level']:$candidQ['level']);
-  $gender = ((isset($_POST['gender']) && $_POST['gender'] != '')?$_POST['gender']:$candidQ['gender']);
-  $image = ((isset($_POST['image']) && $_POST['image'] != '')?$_POST['image']:$candidQ['image']);
   // DECLARATIONS
 
   // EDIT
@@ -37,6 +30,15 @@
 
   // PARSING DATA TO DATABASE
   if ($_POST){
+    $candidQ = mysqli_fetch_assoc($result_candid);
+    
+    $position = ((isset($_POST['position']) && !empty($_POST['position']))?$_POST['position']:$candidQ['position']);
+    $firstname = ((isset($_POST['firstname']) && !empty($_POST['firstname']))?$_POST['firstname']:$candidQ['firstname']);
+    $lastname = ((isset($_POST['lastname']) && !empty($_POST['lastname']))?$_POST['lastname']:$candidQ['lastname']);
+    $level = ((isset($_POST['level']) && !empty($_POST['level']))?$_POST['level']:$candidQ['level']);
+    $gender = ((isset($_POST['gender']) && !empty($_POST['gender']))?$_POST['gender']:$candidQ['gender']);
+    $image = ((isset($_POST['image']) && !empty($_POST['image']))?$_POST['image']:$candidQ['image']);
+    
     //add candidate to database
     $sql_candidI = "INSERT INTO candidates (position,firstname,lastname,level,gender,image) VALUES ('$position', '$firstname', '$lastname', '$level', '$gender', '$image')";
     // $_SESSION['success_flash'] = 'Candidate has been added';
@@ -51,7 +53,7 @@
 ?>
 
 
-  <div class="container p-5 my-5">
+  <div class="container pt-5 my-5">
     <h1 class="font-weight-bolder text-center">Candidates List</h1>
     <hr><br>
     <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#candid_mod"><i class="fa fa-user-plus mr-2"></i>Add Candidate</button>
@@ -85,10 +87,10 @@
         </tfoot>
         <tbody>
           <?php while($res = mysqli_fetch_assoc($result_candid)): ?>
-          <?= $id = $res['id']; ?>
-          <!-- <?php 
-            // include 'includes/candidate_editmodal.php'; 
-          ?> -->
+          <?php $id = $res['id']; ?>
+          <?php 
+            include 'includes/candidate_editmodal.php'; 
+          ?>
             <tr>
               <td><?= $i++; ?></td>
               <td><?= $res['position']; ?></td>
@@ -99,7 +101,7 @@
               <td><?= $res['image']; ?></</td>
               <td>
                 <div class="btn-group btn-group-sm">
-                  <a href="#candid_editmod" data-toggle="modal" class="btn btn-sm btn-outline-primary mr-2"><span class="fa fa-pen-fancy"></span></a>
+                  <a href="#candid_editmod<?= $id; ?>" data-toggle="modal" class="btn btn-sm btn-outline-primary mr-2"><span class="fa fa-pen-fancy"></span></a>
                   <a href="" class="btn btn-sm btn-outline-danger"><span class="fa fa-trash-alt"></span></a>
                 </div>
               </td>
@@ -114,5 +116,5 @@
 
 
 <?php include 'includes/candidate_modal.php'; ?>
-<?php include 'includes/candidate_editmodal.php'; ?>
+<!-- <?php include 'includes/candidate_editmodal.php'; ?> -->
 <?php include 'includes/footer.php'; ?>

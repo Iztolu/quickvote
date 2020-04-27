@@ -16,8 +16,12 @@
               <label>Position:</label>
               <select name="position" class="custom-select">
                 <option value="" selected></option>
-                <?php while($cand = mysqli_fetch_assoc($result_post)): ?>
-                  <option value="<?= $cand['post']; ?>"><?= $cand['post'] ?></option>
+                <?php 
+                  $sql_post = "SELECT * FROM position";
+                  $result_post = $db->query($sql_post);
+                  while($cand = mysqli_fetch_assoc($result_post)):
+                ?>
+                  <option value="<?= $cand['post']; ?>"><?= $cand['post']; ?></option>
                 <?php endwhile; ?>
               </select>
             </div>
@@ -58,7 +62,7 @@
               <label class="custom-file-label" for="customFile">Upload Image</label>
             </div>
 
-            <button type="submit" class="btn btn-block btn-primary">Submit</button>
+            <button type="submit" name="add" class="btn btn-block btn-primary">Submit</button>
           </form>
         </div>
         

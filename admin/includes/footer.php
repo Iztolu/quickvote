@@ -51,7 +51,7 @@
     </script>  -->
     <!-- DATATABLE -->
 
-    <!-- CUSTOM FILE -->
+    <!-- CUSTOM FILE FOR CUSTOM SELECT DROPDOWN-->
     <script>
       // Add the following code if you want the name of the file appear on select
       $(".custom-file-input").on("change", function() {
@@ -59,7 +59,21 @@
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
       });
     </script>
-    <!-- CUSTOM FILE -->
+    <!-- CUSTOM FILE FOR CUSTOM SELECT DROPDOWN-->
+
+    <!-- TOAST RELATED -->
+    <script>
+      $(document).ready(function(){
+        $('.toast').toast('show');
+      });
+
+      window.setTimeout(function () {
+        $(".toast").fadeTo(500, 0).slideUp(500, function () {
+          $(this).remove();
+        });
+      }, 5000);
+    </script>
+    <!-- TOAST RELATED -->
     
   </body>
 </html>

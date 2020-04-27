@@ -18,42 +18,44 @@
 
   // DECLARATIONS
 
-  // EDIT
-  // if (isset($GET['candid_editmod']) && !empty($_GET['candid_editmod'])) {
-    // $edit_id = $_GET['candid_editmod'];
-    // $sql = "SELECT * FROM candidates WHERE id = '$edit_id'";
-    // $edit_result = $db->query($sql);
-    // $main_edit = mysqli_fetch_assoc($edit_result);
-  // }
-  // EDIT
-
 
   // PARSING DATA TO DATABASE
-  if ($_POST){
-    $candidQ = mysqli_fetch_assoc($result_candid);
+  if ($_POST) {
+  //   // $candidQ = mysqli_fetch_assoc($result_candid);
+  //   // $id = $candidQ['id'];
     
-    $position = ((isset($_POST['position']) && !empty($_POST['position']))?$_POST['position']:$candidQ['position']);
-    $firstname = ((isset($_POST['firstname']) && !empty($_POST['firstname']))?$_POST['firstname']:$candidQ['firstname']);
-    $lastname = ((isset($_POST['lastname']) && !empty($_POST['lastname']))?$_POST['lastname']:$candidQ['lastname']);
-    $level = ((isset($_POST['level']) && !empty($_POST['level']))?$_POST['level']:$candidQ['level']);
-    $gender = ((isset($_POST['gender']) && !empty($_POST['gender']))?$_POST['gender']:$candidQ['gender']);
-    $image = ((isset($_POST['image']) && !empty($_POST['image']))?$_POST['image']:$candidQ['image']);
+    $position = ((isset($_POST['position']) && !empty($_POST['position']))?sanitize($_POST['position']):$candidQ['position']);
+    $firstname = ((isset($_POST['firstname']) && !empty($_POST['firstname']))?sanitize($_POST['firstname']):$candidQ['firstname']);
+    $lastname = ((isset($_POST['lastname']) && !empty($_POST['lastname']))?sanitize($_POST['lastname']):$candidQ['lastname']);
+    $level = ((isset($_POST['level']) && !empty($_POST['level']))?sanitize($_POST['level']):$candidQ['level']);
+    $gender = ((isset($_POST['gender']) && !empty($_POST['gender']))?sanitize($_POST['gender']):$candidQ['gender']);
+    $image = ((isset($_POST['image']) && !empty($_POST['image']))?sanitize($_POST['image']):$candidQ['image']);
     
-    //add candidate to database
-    $sql_candidI = "INSERT INTO candidates (position,firstname,lastname,level,gender,image) VALUES ('$position', '$firstname', '$lastname', '$level', '$gender', '$image')";
-    // $_SESSION['success_flash'] = 'Candidate has been added';
-    // if (isset($_GET['edit'])){
-    //   $sql = "UPDATE brand SET brand = '$brand' WHERE  id = '$edit_id'";
-    //   // $_SESSION['success_flash'] = 'Candidate has been updated';
+    //Add candidate to database
+    // if (isset($_POST['add'])) {
+    //   $sql_DB = "INSERT INTO candidates (position,firstname,lastname,level,gender,image) VALUES ('$position', '$firstname', '$lastname', '$level', '$gender', '$image')";
+    //   $_SESSION['success_flash'] = 'Candidate has been added';
+    // } 
+    // if (isset($_POST['edit'])) {
+    //   $sql_DB = "UPDATE candidates SET position = '$position', firstname = '$firstname', lastname = '$lastname', level = '$level', gender = '$gender', image = '$image' WHERE  id = '$id'";
+    //   $_SESSION['success_flash'] = 'Candidate has been updated';
     // }
-    $db->query($sql_candidI);
+
+    $sql_DB = "INSERT INTO candidates (position,firstname,lastname,level,gender,image) VALUES ('$position', '$firstname', '$lastname', '$level', '$gender', '$image')";
+    $_SESSION['success_flash'] = 'Candidate has been added';
+
+    if (isset($_GET['edit'])){
+      $sql_DB = "UPDATE candidates SET position = '$position', firstname = '$firstname', lastname = '$lastname', level = '$level', gender = '$gender', image = '$image' WHERE  id = '$id'";
+      $_SESSION['success_flash'] = 'Candidate has been updated';
+    }
+    $db->query($sql_DB);
     header('Location: candidates.php');
   }
   // PARSING DATA TO DATABASE
 ?>
 
 
-  <div class="container pt-5 my-5">
+  <div class="container pt-5 my-5" style="position: relative">
     <h1 class="font-weight-bolder text-center">Candidates List</h1>
     <hr><br>
     <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#candid_mod"><i class="fa fa-user-plus mr-2"></i>Add Candidate</button>
@@ -86,11 +88,12 @@
           </tr>
         </tfoot>
         <tbody>
-          <?php while($res = mysqli_fetch_assoc($result_candid)): ?>
-          <?php $id = $res['id']; ?>
           <?php 
-            include 'includes/candidate_editmodal.php'; 
+            while($res = mysqli_fetch_assoc($result_candid)): 
+            $id = $res['id'];
+            include 'includes/candidate_editmodal.php';
           ?>
+          
             <tr>
               <td><?= $i++; ?></td>
               <td><?= $res['position']; ?></td>
@@ -101,7 +104,7 @@
               <td><?= $res['image']; ?></</td>
               <td>
                 <div class="btn-group btn-group-sm">
-                  <a href="#candid_editmod<?= $id; ?>" data-toggle="modal" class="btn btn-sm btn-outline-primary mr-2"><span class="fa fa-pen-fancy"></span></a>
+                  <a href="#candid_editmod<?= $id; ?>" id="<?= $id; ?>" data-toggle="modal" class="btn btn-sm btn-outline-primary mr-2"><span class="fa fa-pen-fancy"></span></a>
                   <a href="" class="btn btn-sm btn-outline-danger"><span class="fa fa-trash-alt"></span></a>
                 </div>
               </td>
@@ -114,7 +117,5 @@
 
 
 
-
 <?php include 'includes/candidate_modal.php'; ?>
-<!-- <?php include 'includes/candidate_editmodal.php'; ?> -->
 <?php include 'includes/footer.php'; ?>

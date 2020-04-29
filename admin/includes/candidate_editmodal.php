@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<div class="modal fade" id="candid_editmod<?= $id; ?>">
+<div class="modal fade" id="candid_editmod">
   <div class="modal-dialog">
     <div class="modal-content">
     
@@ -11,59 +11,58 @@
       
       <!-- Modal body -->
       <div class="modal-body">
-        <form action="candidates.php" method="POST">
-          <div class="form-group">
-            <label>Position:</label>
-            <select name="position" class="custom-select">
-              <option value=""<?= (($res['position'] == '')?' selected':''); ?>></option>
-              <?php
-                $sql_post = "SELECT * FROM position";
-                $result_post = $db->query($sql_post);
-                while($cand = mysqli_fetch_assoc($result_post)):
-              ?>
-                <option value="<?= $res['position']; ?>"<?= (($res['position'] == $cand['post'])?' selected':''); ?>><?= $cand['post'] ?></option>
-              <?php endwhile; ?>
-            </select>
-          </div>
+        <div class="form-group">
+          <label>Position:</label>
+          <select id="edit_position" class="custom-select">
+            <option value=""></option>
+            <?php
+              $sql_post = "SELECT * FROM position";
+              $result_post = $db->query($sql_post);
+              while($cand = mysqli_fetch_assoc($result_post)):
+            ?>
+              <option value="<?= $cand['']; ?>"><?= $cand['post'] ?></option>
+            <?php endwhile; ?>
+          </select>
+        </div>
 
-          <div class="form-group">
-            <label for="firstname">First Name:</label>
-            <input type="text" class="form-control" id="firstname" name="firstname" value="<?= $res['firstname']; ?>">
-          </div>
+        <div class="form-group">
+          <label for="edit_firstname">First Name:</label>
+          <input type="text" class="form-control text-capitalize" id="edit_firstname">
+        </div>
 
-          <div class="form-group">
-            <label for="lastname">Last Name:</label>
-            <input type="text" class="form-control" id="lastname" name="lastname" value="<?= $res['lastname']; ?>">
-          </div>
+        <div class="form-group">
+          <label for="edit_lastname">Last Name:</label>
+          <input type="text" class="form-control text-capitalize" id="edit_lastname">
+        </div>
 
-          <div class="form-group">
-            <label>Level:</label>
-            <select name="level" class="custom-select">
-              <option value=""<?= (($res['level'] == '')?' selected':''); ?>></option>
-              <option value="100"<?= (($res['level'] == '100')?' selected':''); ?>>100</option>
-              <option value="200"<?= (($res['level'] == '200')?' selected':''); ?>>200</option>
-              <option value="300"<?= (($res['level'] == '300')?' selected':''); ?>>300</option>
-              <option value="400"<?= (($res['level'] == '400')?' selected':''); ?>>400</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label>Level:</label>
+          <select id="edit_level" class="custom-select">
+            <option value=""></option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="300">300</option>
+            <option value="400">400</option>
+          </select>
+        </div>
 
-          <div class="form-group">
-            <label>Gender:</label>
-            <select name="gender" class="custom-select">
-              <option value=""<?= (($res['gender'] == '')?' selected':''); ?>></option>
-              <option value="Male"<?= (($res['gender'] == 'Male')?' selected':''); ?>>Male</option>
-              <option value="Female"<?= (($res['gender'] == 'Female')?' selected':''); ?>>Female</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label>Gender:</label>
+          <select id="edit_gender" class="custom-select">
+            <option value=""></option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
 
-          <p>Custom file:</p>
-          <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input" id="customFile" name="image">
-            <label class="custom-file-label" for="customFile">Upload Image</label>
-          </div>
+        <p>Custom file:</p>
+        <div class="custom-file mb-3">
+          <input type="file" class="custom-file-input" id="edit_image">
+          <label class="custom-file-label" for="edit_image">Upload Image</label>
+        </div>
 
-          <button type="submit" name="edit" class="btn btn-block btn-primary">Submit</button>
-        </form>
+        <button type="submit" class="btn btn-block btn-primary" onclick="updateCandidate()">Save Changes</button>
+        <input type="hidden" id="hidden_user_id">
       </div>
       
       <!-- Modal footer -->

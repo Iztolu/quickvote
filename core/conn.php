@@ -38,7 +38,17 @@
     echo    '</div>';
     echo '</div>';
     unset($_SESSION['success_flash']);
-	}
+  }
+  
+  $toast = '<div class="toast mt-5" data-autohide="false" style="position: absolute; top:0; right:0">
+              <div class="toast-header">
+                <strong class="mr-auto text-success">Success</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+              </div>
+              <div class="toast-body"> Success
+              </div>
+            </div>';
+            // echo $toast;
 
 	if (isset($_SESSION['error_flash'])) {
     echo '<div class="toast mt-5" data-autohide="false" style="position: absolute; top:0; right:0">';

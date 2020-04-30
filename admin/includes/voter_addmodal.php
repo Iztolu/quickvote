@@ -11,6 +11,8 @@
       
       <!-- Modal body -->
       <div class="modal-body">
+        <div id="error_message" class="text-danger text-center"></div>
+
         <div class="form-group">
           <label for="voters_id">ID:</label>
           <input type="text" class="form-control" id="voters_id">
@@ -53,7 +55,7 @@
 
         <div class="form-group">
           <label>Status:</label>
-          <select id="gender" class="custom-select">
+          <select id="status" class="custom-select">
             <option selected></option>
             <option value="Voted">Voted</option>
             <option value="Female">Not Voted</option>

@@ -16,31 +16,35 @@ function addCandidate() {
   var gender = $("#gender").val();
   var image = $("#image").val();
 
-  // Add record
-  $.post("models/addCandidates.php", {
-    position: position,
-    firstname: firstname,
-    lastname: lastname,
-    level: level,
-    gender: gender,
-    image: image
-  }, 
+  if(position == "" || firstname == "" || lastname == "" || level == "" || gender == "" || image == "") {
+		$("#error_message").show().html("All Fields are Required");
+	} else {
+    // Add record
+    $.post("models/addCandidates.php", {
+      position: position,
+      firstname: firstname,
+      lastname: lastname,
+      level: level,
+      gender: gender,
+      image: image
+    }, 
 
-  function (data, status) {
-    // close the popup
-    $("#candidate_addmodal").modal("hide");
+    function (data, status) {
+      // close the popup
+      $("#candidate_addmodal").modal("hide");
 
-    // read records again
-    readCandidate();
+      // read records again
+      readCandidate();
 
-    // clear fields from the popup
-    $("#position").val("");
-    $("#firstname").val("");
-    $("#lastname").val("");
-    $("#level").val("");
-    $("#gender").val("");
-    $("#image").val("");
-  });
+      // clear fields from the popup
+      $("#position").val("");
+      $("#firstname").val("");
+      $("#lastname").val("");
+      $("#level").val("");
+      $("#gender").val("");
+      $("#image").val("");
+    });
+  }
 }
 
 function getCandidateDetails(id) {

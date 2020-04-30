@@ -11,6 +11,8 @@
       
       <!-- Modal body -->
       <div class="modal-body">
+        <div id="error_message" class="text-danger text-center"></div>
+
         <div class="form-group">
           <label>Position:</label>
           <select id="position" class="custom-select">

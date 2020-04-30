@@ -18,35 +18,44 @@ function addVoter() {
   var status = $("#status").val();
   var account = $("#account").val();
 
-  // Add record
-  $.post("models/addVoters.php", {
-    voters_id: voters_id,
-    firstname: firstname,
-    lastname: lastname,
-    pwd: pwd,
-    level: level,
-    gender: gender,
-    status: status,
-    account: account
-  }, 
+  if(voters_id == "" || firstname == "" || lastname == "" || pwd == "" || level == "" || gender == "" || status == "" || account == "") {
+		$("#error_message").show().html("All Fields are Required");
+	} else {
+		$("#error_message").html("").hide();
+    // Add record
+    $.post("models/addVoters.php", {
+      voters_id: voters_id,
+      firstname: firstname,
+      lastname: lastname,
+      pwd: pwd,
+      level: level,
+      gender: gender,
+      status: status,
+      account: account
+    }, 
 
-  function (data, status) {
-    // close the popup
-    $("#voter_addmodal").modal("hide");
+    function (data, status) {
+      // close the popup
+      $("#voter_addmodal").modal("hide");
 
-    // read records again
-    readVoter();
+      // read records again
+      readVoter();
+      $.get("../core/conn.php", {}, function (data, status) {
+        $(".snackbar").html(toast);
+      });
+      // readToast();
 
-    // clear fields from the popup
-    $("#voters_id").val("");
-    $("#firstname").val("");
-    $("#lastname").val("");
-    $("#pwd").val("");
-    $("#level").val("");
-    $("#gender").val("");
-    $("#status").val("");
-    $("#account").val("");
-  });
+      // clear fields from the popup
+      $("#voters_id").val("");
+      $("#firstname").val("");
+      $("#lastname").val("");
+      $("#pwd").val("");
+      $("#level").val("");
+      $("#gender").val("");
+      $("#status").val("");
+      $("#account").val("");
+    });
+  }
 }
 
 function getVoterDetails(id) {

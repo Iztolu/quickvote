@@ -1,9 +1,10 @@
 <?php 
-  include 'includes/head.php'; 
-  include 'includes/navigation.php'
+  require_once '../core/conn.php'; 
+  include 'views/head.php'; 
+  include 'views/navigation.php'
 ?>
 
-  <div class="container p-5 mt-5">
+  <div class="container pt-5 my-5">
     <h1 class="font-weight-bolder text-center">Voters List</h1>
     <hr><br>
 
@@ -19,92 +20,14 @@
 
     <br>
 
-    <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#vote_mod"><i class="fa fa-user-plus mr-2"></i>Add Voter</button>
+    <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#voter_addmodal"><i class="fa fa-user-plus mr-2"></i>Add Voter</button>
     <br>
     
-
-    <div class="table-responsive">
-      <table class="table table-borderless table-striped table-hover table-sm" id="dataTable">
-        <thead>
-          <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Password</th>
-            <th>Level</th>
-            <th>Gender</th>
-            <th>Status</th>
-            <th>Account</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tfoot>
-          <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Password</th>
-            <th>Level</th>
-            <th>Gender</th>
-            <th>Status</th>
-            <th>Account</th>
-            <th>Action</th>
-          </tr>
-        </tfoot>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>21h952ikm</td>
-            <td>Dan Brown</td>
-            <td>asdfg</td>
-            <td>300</td>
-            <td>Male</td>
-            <td>Not Voted</td>
-            <td>Active</td>
-            <td>
-              <div class="btn-group btn-group-sm">
-                <a href="" class="btn btn-sm btn-outline-primary mr-2"><span class="fa fa-pen-fancy"></span></a>
-                <a href="" class="btn btn-sm btn-outline-danger"><span class="fa fa-trash-alt"></span></a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>31t9v2ilm</td>
-            <td>San Gown</td>
-            <td>asgfd</td>
-            <td>400</td>
-            <td>Female</td>
-            <td>Not Voted</td>
-            <td>Active</td>
-            <td>
-              <div class="btn-group btn-group-sm">
-                <a href="" class="btn btn-sm btn-outline-primary mr-2"><span class="fa fa-pen-fancy"></span></a>
-                <a href="" class="btn btn-sm btn-outline-danger"><span class="fa fa-trash-alt"></span></a>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>14a4e2ijm</td>
-            <td>Ian Caes</td>
-            <td>gfdsa</td>
-            <td>200</td>
-            <td>Male</td>
-            <td>Not Voted</td>
-            <td>Active</td>
-            <td>
-              <div class="btn-group btn-group-sm">
-                <a href="" class="btn btn-sm btn-outline-primary mr-2"><span class="fa fa-pen-fancy"></span></a>
-                <a href="" class="btn btn-sm btn-outline-danger"><span class="fa fa-trash-alt"></span></a>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="voters_content"></div>
   </div>
 
-
-<?php include 'includes/voter_modal.php'; ?>
-<?php include 'includes/footer.php'; ?>
+<?php 
+  include 'includes/voter_addmodal.php';
+  include 'includes/voter_updatemodal.php';
+  include 'views/footer.php'; 
+?>

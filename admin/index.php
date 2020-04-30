@@ -1,6 +1,6 @@
-<?php 
-  include 'includes/head.php'; 
-  include 'includes/navigation.php'
+<?php
+  include 'views/head.php'; 
+  include 'views/navigation.php'
 ?>
 
 
@@ -8,4 +8,4 @@
 
 
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'views/footer.php'; ?>

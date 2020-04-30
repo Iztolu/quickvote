@@ -1,4 +1,4 @@
-<?php include 'includes/head.php'; ?>
+<?php include 'views/head.php'; ?>
 
 
       <h1 class="font-weight-bold text-center p-5">Quick Vote - Admin Login</h1>
@@ -25,4 +25,4 @@
         </form>
       </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'views/footer.php'; ?>

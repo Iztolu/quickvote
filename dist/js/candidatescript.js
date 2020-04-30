@@ -2,6 +2,7 @@
 function readCandidate() {
   $.get("models/readCandidates.php", {}, function (data, status) {
     $(".candidates_content").html(data);
+    $('#dataTable').DataTable();
   });
 }
 

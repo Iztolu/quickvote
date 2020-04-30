@@ -31,11 +31,11 @@
     <!-- HOVER ON DROPDOWN -->
 
     <!-- DATATABLE -->
-    <script>
+    <!-- <script>
       $(document).ready(function() {
         $('#dataTable').DataTable();
       });
-    </script>
+    </script> -->
 
     <!-- If you want to disable some features, use the following code. -->
     <!-- <script>

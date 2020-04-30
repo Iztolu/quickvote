@@ -2,6 +2,7 @@
 function readVoter() {
   $.get("models/readVoters.php", {}, function (data, status) {
     $(".voters_content").html(data);
+    $('#dataTable').DataTable();
   });
 }
 

@@ -135,4 +135,3 @@ $(document).ready(function () {
   // READ recods on page load
   readVoter(); // calling function
 });
-

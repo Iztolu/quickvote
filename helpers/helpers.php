@@ -16,6 +16,9 @@
 
 	function sanitize($dirty){
 		return htmlentities($dirty, ENT_QUOTES, "UTF-8");
+		return trim($dirty);
+		return stripslashes($dirty);
+		return htmlspecialchars($dirty);
 	}
 
 	// function money($number){

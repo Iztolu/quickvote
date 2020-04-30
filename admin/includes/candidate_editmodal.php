@@ -20,7 +20,7 @@
               $result_post = $db->query($sql_post);
               while($cand = mysqli_fetch_assoc($result_post)):
             ?>
-              <option value="<?= $cand['']; ?>"><?= $cand['post'] ?></option>
+              <option value="<?= $cand['post']; ?>"><?= $cand['post']; ?></option>
             <?php endwhile; ?>
           </select>
         </div>

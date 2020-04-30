@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<div class="modal fade" id="candid_editmod">
+<div class="modal fade" id="candidate_updatemodal">
   <div class="modal-dialog">
     <div class="modal-content">
     
@@ -13,7 +13,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label>Position:</label>
-          <select id="edit_position" class="custom-select">
+          <select id="update_position" class="custom-select">
             <option value=""></option>
             <?php
               $sql_post = "SELECT * FROM position";
@@ -26,18 +26,18 @@
         </div>
 
         <div class="form-group">
-          <label for="edit_firstname">First Name:</label>
-          <input type="text" class="form-control text-capitalize" id="edit_firstname">
+          <label for="update_firstname">First Name:</label>
+          <input type="text" class="form-control text-capitalize" id="update_firstname">
         </div>
 
         <div class="form-group">
-          <label for="edit_lastname">Last Name:</label>
-          <input type="text" class="form-control text-capitalize" id="edit_lastname">
+          <label for="update_lastname">Last Name:</label>
+          <input type="text" class="form-control text-capitalize" id="update_lastname">
         </div>
 
         <div class="form-group">
           <label>Level:</label>
-          <select id="edit_level" class="custom-select">
+          <select id="update_level" class="custom-select">
             <option value=""></option>
             <option value="100">100</option>
             <option value="200">200</option>
@@ -48,7 +48,7 @@
 
         <div class="form-group">
           <label>Gender:</label>
-          <select id="edit_gender" class="custom-select">
+          <select id="update_gender" class="custom-select">
             <option value=""></option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -57,8 +57,8 @@
 
         <p>Custom file:</p>
         <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="edit_image">
-          <label class="custom-file-label" for="edit_image">Upload Image</label>
+          <input type="file" class="custom-file-input" id="update_image">
+          <label class="custom-file-label" for="update_image">Upload Image</label>
         </div>
 
         <button type="submit" class="btn btn-block btn-primary" onclick="updateCandidate()">Save Changes</button>

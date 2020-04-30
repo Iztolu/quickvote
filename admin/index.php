@@ -1,6 +1,6 @@
 <?php 
-  include 'includes/head.php'; 
-  include 'includes/navigation.php'
+  include 'models/head.php'; 
+  include 'models/navigation.php'
 ?>
 
 
@@ -8,4 +8,4 @@
 
 
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'models/footer.php'; ?>

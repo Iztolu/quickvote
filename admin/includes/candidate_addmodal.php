@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<div class="modal fade" id="candid_addmod">
+<div class="modal fade" id="candidate_addmodal">
     <div class="modal-dialog">
       <div class="modal-content">
       

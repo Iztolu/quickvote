@@ -3,7 +3,6 @@
   include 'views/head.php'; 
   include 'views/navigation.php';
 
-
   // DATABASE
   // $sql_candid = "SELECT * FROM candidates WHERE deleted = 0";
   // $result_candid = $db->query($sql_candid);
@@ -26,8 +25,8 @@
 
 
 
-<?php 
+<?php
   include 'includes/candidate_addmodal.php';
   include 'includes/candidate_updatemodal.php';
-  include 'views/footer.php'; 
+  include 'views/footer.php';
 ?>

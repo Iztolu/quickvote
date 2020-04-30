@@ -13,6 +13,7 @@
     <script type="text/javascript" src="../dist/datatable/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../dist/datatable/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript" src="../dist/js/candidatescript.js"></script>
+    <script type="text/javascript" src="../dist/js/voterscript.js"></script>
     
 
     <!-- HOVER ON DROPDOWN -->

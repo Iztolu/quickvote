@@ -8,7 +8,7 @@
       $user_id = $_POST['id'];
 
       // Get User Details
-      $query = "SELECT * FROM candidates WHERE id = '$user_id'";
+      $query = "SELECT * FROM voters WHERE id = '$user_id'";
 
       $result = $db->query($query);
       $response = array();

@@ -6,7 +6,7 @@
   }
 
   session_start();	
-  define('BASEURL', $_SERVER['DOCUMENT_ROOT'].'/Projects/InProgress/Voting/');
+  define('BASEURL', $_SERVER['DOCUMENT_ROOT'].'/Projects/InProgress/quickvote/');
 	require_once BASEURL.'helpers/helpers.php';
 
 

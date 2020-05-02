@@ -12,7 +12,8 @@
 
     <script type="text/javascript" src="../dist/datatable/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="../dist/datatable/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript" src="../dist/js/adminscript.js"></script>
+    <script type="text/javascript" src="../dist/js/candidatescript.js"></script>
+    <script type="text/javascript" src="../dist/js/voterscript.js"></script>
     
 
     <!-- HOVER ON DROPDOWN -->
@@ -30,11 +31,11 @@
     <!-- HOVER ON DROPDOWN -->
 
     <!-- DATATABLE -->
-    <script>
+    <!-- <script>
       $(document).ready(function() {
         $('#dataTable').DataTable();
       });
-    </script>
+    </script> -->
 
     <!-- If you want to disable some features, use the following code. -->
     <!-- <script>

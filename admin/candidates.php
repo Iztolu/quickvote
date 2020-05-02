@@ -1,8 +1,7 @@
 <?php 
   require_once '../core/conn.php'; 
-  include 'includes/head.php'; 
-  include 'includes/navigation.php';
-
+  include 'views/head.php'; 
+  include 'views/navigation.php';
 
   // DATABASE
   // $sql_candid = "SELECT * FROM candidates WHERE deleted = 0";
@@ -18,7 +17,7 @@
   <div class="container pt-5 my-5" style="position: relative">
     <h1 class="font-weight-bolder text-center">Candidates List</h1>
     <hr><br>
-    <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#candid_addmod"><i class="fa fa-user-plus mr-2"></i>Add Candidate</button>
+    <button type="button" class="btn btn-block btn-success" data-toggle="modal" data-target="#candidate_addmodal"><i class="fa fa-user-plus mr-2"></i>Add Candidate</button>
     <br>
 
     <div class="candidates_content"></div>
@@ -26,8 +25,8 @@
 
 
 
-<?php 
+<?php
   include 'includes/candidate_addmodal.php';
-  include 'includes/candidate_editmodal.php';
-  include 'includes/footer.php'; 
+  include 'includes/candidate_updatemodal.php';
+  include 'views/footer.php';
 ?>

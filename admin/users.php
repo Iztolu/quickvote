@@ -1,6 +1,6 @@
 <?php 
-  include 'includes/head.php'; 
-  include 'includes/navigation.php'
+  include 'views/head.php'; 
+  include 'views/navigation.php'
 ?>
 
   <div class="container p-5 my-5">
@@ -90,4 +90,4 @@
 
 
 <?php include 'includes/user_modal.php'; ?>
-<?php include 'includes/footer.php'; ?>
+<?php include 'views/footer.php'; ?>
